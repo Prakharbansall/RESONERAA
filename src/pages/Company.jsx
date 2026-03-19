@@ -168,9 +168,9 @@ export default function Company({ onNav }) {
 
       {/* VALUES */}
       <section className="co-values">
-        <div className="co-values__header">
+        <div className="co-values__header">     
+          <h2 className="section-title">Principles That <span className="accent">Drive Us</span></h2>
           <span className="section-eyebrow">OUR VALUES</span>
-          <h2 className="section-title">Principles That<br/><span className="accent">Drive Us</span></h2>
         </div>
         <div className="co-values__grid">
           {values.map(v => (

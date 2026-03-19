@@ -243,8 +243,9 @@ export default function Home({ onNav }) {
       {/* ── INDUSTRIES ── */}
       <section className="industries-section">
         <div className="industries-header">
+          
+          <h2 className="section-title">AI for Every <span className="accent">Vertical</span></h2>
           <span className="section-eyebrow">INDUSTRIES WE SERVE</span>
-          <h2 className="section-title">AI for Every<br/><span className="accent">Vertical</span></h2>
         </div>
         <div className="industries-grid">
           {industries.map(ind => (

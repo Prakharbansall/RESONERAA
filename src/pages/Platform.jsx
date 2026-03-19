@@ -169,8 +169,8 @@ export default function Platform({ onNav }) {
       {/* DEPLOYMENT */}
       <section className="plt-deploy">
         <div className="plt-deploy__header">
-          <span className="section-eyebrow">DEPLOYMENT OPTIONS</span>
-          <h2 className="section-title">Deploy Anywhere,<br/><span className="accent">Your Way</span></h2>
+          <h2 className="section-title ">Deploy Anywhere, <span className="accent">Your Way</span></h2>
+             <span className="section-eyebrow">DEPLOYMENT OPTIONS</span>
         </div>
         <div className="plt-deploy__grid">
           {[

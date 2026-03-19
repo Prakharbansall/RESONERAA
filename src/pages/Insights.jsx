@@ -128,8 +128,8 @@ export default function Insights() {
       {/* AI TOPICS */}
       <section className="ins-topics">
         <div className="ins-topics__header">
-          <span className="section-eyebrow">EXPLORE TOPICS</span>
           <h2 className="section-title">What We Write <span className="accent">About</span></h2>
+           <span className="section-eyebrow">EXPLORE TOPICS</span>
         </div>
         <div className="ins-topics__grid">
           {[
