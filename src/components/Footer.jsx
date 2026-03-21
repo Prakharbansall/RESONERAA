@@ -1,68 +1,314 @@
 import React from "react";
+import aiImg from "../assets/ai.jpg";
+
+
 export default function Footer({ onNav }) {
   const year = new Date().getFullYear();
-  const navLinks = ["Home","Company","Platform","Insights","Contact"];
-  const services = ["AI Consulting","Custom ML Models","NLP Solutions","AI Integration","Data Strategy","Computer Vision"];
+
+  const companyLinks = ["Home", "Company", "Platform", "Insights", "Contact"];
+
+
+
   return (
     <>
       <footer className="footer">
-        <div className="footer__top-line" />
-        <div className="footer__inner">
-          <div className="footer__brand">
-            <button className="footer__logo" onClick={() => onNav("home")}>
-              <span className="footer__logo-mark">◈</span>
-              <span className="footer__logo-text">RESONERA<span style={{color:"var(--accent)"}}>AI</span></span>
+        {/* Top divider line */}
+        <div className="footer-rule" />
+
+        <div className="footer-inner">
+          {/* Brand column */}
+          <div className="footer-brand">
+            <button className="footer-logo" onClick={() => onNav("home")}>
+              <img src={aiImg} alt="ResoneraAI logo" className="footer-logo-img" />
+              <span className="footer-logo-name">ResoneraAI Pvt. Ltd. </span>
             </button>
-            <p className="footer__tagline">Intelligent systems.<br/>Transformative outcomes.</p>
-            <p className="footer__cin">RESONERAAI PRIVATE LIMITED<br/>Mumbai · Maharashtra · India</p>
+
+            <p className="footer-tagline">
+              Intelligent systems that<br />create real impact.
+            </p>
+
+            
           </div>
-          <div className="footer__col">
-            <h4 className="footer__col-title">Navigate</h4>
-            {navLinks.map(l => (
-              <button key={l} className="footer__link" onClick={() => onNav(l.toLowerCase())}>{l}</button>
-            ))}
+
+          {/* Company links */}
+          <div className="footer-col">
+            <p className="footer-col-heading">Company</p>
+            <nav className="footer-nav">
+              {companyLinks.map((link) => (
+                <button
+                  key={link}
+                  className="footer-nav-link"
+                  onClick={() => onNav(link.toLowerCase())}
+                >
+                  {link}
+                </button>
+              ))}
+            </nav>
           </div>
-          <div className="footer__col">
-            <h4 className="footer__col-title">Services</h4>
-            {services.map(s => <span key={s} className="footer__link footer__link--static">{s}</span>)}
-          </div>
-          <div className="footer__col">
-            <h4 className="footer__col-title">Contact</h4>
-            <a href="mailto:hello@resoneraai.com" className="footer__link footer__link--a">hello@resoneraai.com</a>
-            <span className="footer__link footer__link--static">+91 98000 00000</span>
-            <span className="footer__link footer__link--static footer__addr">
-              Room No.2, Kore Sankalp,<br/>Siddhi Chawl, Chougle Nag,<br/>Borivali East, Mumbai 400066<br/>Maharashtra, India
-            </span>
+
+          {/* Contact */}
+          <div className="footer-col">
+            <p className="footer-col-heading">Contact</p>
+            <div className="footer-contact-list">
+              <a href="mailto:hello@resoneraai.com" className="footer-contact-item footer-contact-link">
+                hello@resoneraai.com
+              </a>
+              <span className="footer-contact-item">+91 98000 00000</span>
+              <span className="footer-contact-item footer-address">
+                Borivali East,<br />Mumbai – 400066,<br />Maharashtra, India
+              </span>
+            </div>
           </div>
         </div>
-        <div className="footer__bottom">
-          <span className="footer__copy">© {year} RESONERAAI PRIVATE LIMITED. All rights reserved.</span>
-          <span className="footer__legal">Designed & Built in India 🇮🇳</span>
+
+        {/* Bottom bar */}
+        <div className="footer-bottom">
+          <span className="footer-copy">
+            © ResoneraAI Pvt. Ltd. All rights reserved.
+          </span>
+          <div className="footer-legal">
+            <button className="footer-legal-link" onClick={() => onNav("legal")}>Privacy</button>
+            <button className="footer-legal-link" onClick={() => onNav("legal")}>Terms</button>
+          </div>
         </div>
       </footer>
+
       <style>{`
-        .footer{background:var(--bg-2);border-top:1px solid var(--border);padding:80px 80px 40px;position:relative;overflow:hidden;}
-        .footer::before{content:'';position:absolute;bottom:-150px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,163,.03) 0%,transparent 70%);pointer-events:none;}
-        .footer__top-line{position:absolute;top:0;left:80px;right:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(0,255,163,.25),transparent);}
-        .footer__inner{display:grid;grid-template-columns:2fr 1fr 1fr 1.6fr;gap:60px;margin-bottom:60px;}
-        .footer__logo{display:flex;align-items:center;gap:10px;background:none;border:none;cursor:none;margin-bottom:18px;}
-        .footer__logo-mark{font-size:1.4rem;color:var(--accent);}
-        .footer__logo-text{font-family:'Space Mono',monospace;font-size:.92rem;font-weight:700;color:var(--fg);letter-spacing:.15em;}
-        .footer__tagline{font-family:'Crimson Pro',serif;font-size:1.05rem;color:var(--fg-muted);line-height:1.75;margin-bottom:16px;}
-        .footer__cin{font-family:'Space Mono',monospace;font-size:.62rem;color:rgba(255,255,255,.22);letter-spacing:.08em;line-height:1.8;margin-bottom:20px;}
-        .footer__socials{display:flex;gap:12px;}
-        .footer__social{font-family:'Space Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.1em;color:var(--fg-muted);text-decoration:none;border:1px solid rgba(255,255,255,.1);padding:5px 10px;border-radius:2px;transition:all .2s;}
-        .footer__social:hover{border-color:var(--accent);color:var(--accent);}
-        .footer__col{display:flex;flex-direction:column;gap:10px;}
-        .footer__col-title{font-family:'Space Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
-        .footer__link{font-size:.875rem;color:var(--fg-muted);background:none;border:none;cursor:none;text-align:left;padding:0;transition:color .2s;line-height:1.5;}
-        .footer__link:not(.footer__link--static):hover{color:var(--accent);}
-        .footer__link--a{text-decoration:none;cursor:none;}
-        .footer__addr{font-size:.8rem;line-height:1.9;}
-        .footer__bottom{display:flex;justify-content:space-between;align-items:center;padding-top:32px;border-top:1px solid rgba(255,255,255,.05);}
-        .footer__copy,.footer__legal{font-family:'Space Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.22);letter-spacing:.08em;}
-        @media(max-width:900px){.footer{padding:60px 24px 32px;}.footer__top-line{left:24px;right:24px;}.footer__inner{grid-template-columns:1fr 1fr;gap:36px;}.footer__bottom{flex-direction:column;gap:10px;text-align:center;}}
-        @media(max-width:480px){.footer__inner{grid-template-columns:1fr;}}
+        /* ── Design tokens ─────────────────────────── */
+        .footer {
+          --rose-50:  #fff5f7;
+          --rose-100: #ffe4ea;
+          --rose-200: #ffc1cc;
+          --rose-500: #e8294c;
+          --rose-600: #c41f3e;
+          --text-primary:   #1a1014;
+          --text-secondary: #6b5059;
+          --text-muted:     #9d8089;
+          --border-soft:    rgba(232, 41, 76, 0.12);
+
+          font-family: 'DM Sans', system-ui, sans-serif;
+          background: var(--rose-50);
+          padding: 0 24px 0;
+        }
+
+        /* ── Top rule ──────────────────────────────── */
+        .footer-rule {
+          max-width: 1120px;
+          margin: 0 auto;
+          height: 1px;
+          background: var(--border-soft);
+        }
+
+        /* ── Inner grid ────────────────────────────── */
+        .footer-inner {
+          max-width: 1120px;
+          margin: 0 auto;
+          padding: 72px 0 56px;
+          display: grid;
+          grid-template-columns: 2.2fr 1fr 1.4fr;
+          gap: 48px;
+        }
+
+        /* ── Brand ─────────────────────────────────── */
+        .footer-logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+          width: 67px;
+          height: 52px;
+          border-radius: 9px;
+          object-fit: cover;
+          border: 0.4px solid var(--rose-200);
+        }
+
+        .footer-logo-name {
+          font-size: 1.05rem;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          color: var(--text-primary);
+        }
+
+        .footer-tagline {
+          font-size: 0.95rem;
+          line-height: 1.65;
+          color: var(--text-secondary);
+          margin: 0 0 28px;
+          max-width: 240px;
+        }
+
+        .footer-social {
+          display: flex;
+          gap: 4px;
+        }
+
+        .footer-social-link {
+          font-size: 0.78rem;
+          font-weight: 500;
+          letter-spacing: 0.01em;
+          color: var(--text-muted);
+          text-decoration: none;
+          padding: 5px 10px;
+          border-radius: 20px;
+          border: 1px solid var(--border-soft);
+          transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+        }
+
+        .footer-social-link:hover {
+          color: var(--rose-500);
+          border-color: var(--rose-200);
+          background: var(--rose-100);
+        }
+
+        /* ── Column heading ────────────────────────── */
+        .footer-col-heading {
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--rose-500);
+          margin: 0 0 20px;
+        }
+
+        /* ── Navigation links ──────────────────────── */
+        .footer-nav {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .footer-nav-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.9rem;
+          color: var(--text-secondary);
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 6px 0;
+          text-align: left;
+          transition: color 0.16s ease, transform 0.16s ease;
+          width: fit-content;
+        }
+
+        .footer-nav-link::before {
+          content: '';
+          display: block;
+          width: 0;
+          height: 1px;
+          background: var(--rose-500);
+          transition: width 0.2s ease;
+          flex-shrink: 0;
+        }
+
+        .footer-nav-link:hover {
+          color: var(--rose-500);
+        }
+
+        .footer-nav-link:hover::before {
+          width: 12px;
+        }
+
+        /* ── Contact ───────────────────────────────── */
+        .footer-contact-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .footer-contact-item {
+          font-size: 0.88rem;
+          color: var(--text-secondary);
+          line-height: 1.55;
+        }
+
+        .footer-contact-link {
+          text-decoration: none;
+          transition: color 0.16s ease;
+        }
+
+        .footer-contact-link:hover {
+          color: var(--rose-500);
+        }
+
+        .footer-address {
+          color: var(--text-muted);
+          font-size: 0.84rem;
+        }
+
+        /* ── Bottom bar ────────────────────────────── */
+        .footer-bottom {
+          max-width: 1120px;
+          margin: 0 auto;
+          padding: 20px 0 32px;
+          border-top: 1px solid var(--border-soft);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .footer-copy {
+          font-size: 0.78rem;
+          color: var(--text-muted);
+        }
+
+        .footer-legal {
+          display: flex;
+          gap: 20px;
+        }
+
+        .footer-legal-link {
+          font-size: 0.78rem;
+          color: var(--text-muted);
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          transition: color 0.16s ease;
+        }
+
+        .footer-legal-link:hover {
+          color: var(--rose-500);
+        }
+
+        /* ── Responsive ────────────────────────────── */
+        @media (max-width: 860px) {
+          .footer-inner {
+            grid-template-columns: 1fr 1fr;
+            padding: 56px 0 40px;
+          }
+
+          .footer-brand {
+            grid-column: 1 / -1;
+          }
+
+          .footer-tagline {
+            max-width: 100%;
+          }
+        }
+
+        @media (max-width: 520px) {
+          .footer-inner {
+            grid-template-columns: 1fr;
+            gap: 36px;
+            padding: 48px 0 36px;
+          }
+
+          .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+          }
+        }
       `}</style>
     </>
   );
