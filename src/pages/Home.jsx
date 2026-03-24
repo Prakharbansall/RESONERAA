@@ -126,7 +126,7 @@ const industries = [
 ];
 
 const testimonials = [
-  { q:"Currently working with early partners to validate and improve the product.", n:"Early-stage collaboration",  r:"" },
+  { q:"Currently collaborating with early partners to validate and refine the product.", n:"Partner Validation & Collaboration",  r:"" },
   { q:"Building in public - learning, iterating, and improving with each release.", n:"Learning fast, shipping faster", r:"" },
   { q:"Looking for teams willing to collaborate and grow with us.", n:"Growing together", r:"" },
 ];
