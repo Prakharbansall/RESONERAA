@@ -130,11 +130,6 @@ const services = [
 ];
 
 const testimonials = [
-<<<<<<< HEAD
-  { q:"Currently collaborating with early partners to validate and refine the product.", n:"Partner Validation & Collaboration",  r:"" },
-  { q:"Building in public - learning, iterating, and improving with each release.", n:"Learning fast, shipping faster", r:"" },
-  { q:"Looking for teams willing to collaborate and grow with us.", n:"Growing together", r:"" },
-=======
   {
     q:"Initial conversations and exploratory collaborations are helping shape the direction of the platform.  ",
     n:"Partner Validation & Collaboration",
@@ -150,7 +145,6 @@ const testimonials = [
     n:"Building in public, iterating openly",
     r:""
   },
->>>>>>> 86f8c9b (According to client)
 ];
 
 /* ─────────────────────────────────────────────────────────
