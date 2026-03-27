@@ -30,7 +30,7 @@ export default function Navbar({ activePage, onNav }) {
         <div className="nav-inner">
 
           {/* ── Logo ── */}
-          <button className="nav-logo" onClick={() => handleNav("home")}>
+          <button className="nav-logo" onClick={() => window.location.href = 'https://resoneraaipvtltd.in/'}>
             <img src={aiImg} alt="ResoneraAI" className="nav-logo-img" />
             <span className="nav-logo-word">Resonera<span className="nav-logo-ai">AI</span></span>
             

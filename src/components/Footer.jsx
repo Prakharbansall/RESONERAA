@@ -1,36 +1,33 @@
 import React from "react";
 import aiImg from "../assets/ai.jpg";
 
-
 export default function Footer({ onNav }) {
-  const year = new Date().getFullYear();
 
   const companyLinks = ["Home", "Company", "Platform", "Insights", "Contact"];
-
-
 
   return (
     <>
       <footer className="footer">
-        {/* Top divider line */}
         <div className="footer-rule" />
 
         <div className="footer-inner">
-          {/* Brand column */}
+          {/* ── Brand & Identity ── */}
           <div className="footer-brand">
             <button className="footer-logo" onClick={() => onNav("home")}>
               <img src={aiImg} alt="ResoneraAI logo" className="footer-logo-img" />
-              <span className="footer-logo-name">ResoneraAI Pvt. Ltd. </span>
+              <span className="footer-logo-name">ResoneraAI Pvt. Ltd.</span>
             </button>
 
             <p className="footer-tagline">
               Intelligent systems that<br />create real impact.
             </p>
-
             
+            <div className="footer-status-tag">
+              Initiative under development
+            </div>
           </div>
 
-          {/* Company links */}
+          {/* ── Navigation ── */}
           <div className="footer-col">
             <p className="footer-col-heading">Company</p>
             <nav className="footer-nav">
@@ -46,52 +43,58 @@ export default function Footer({ onNav }) {
             </nav>
           </div>
 
-          {/* Contact */}
+          {/* ── Contact & Jurisdiction ── */}
           <div className="footer-col">
             <p className="footer-col-heading">Contact</p>
             <div className="footer-contact-list">
-              <a href="mailto:hello@resoneraai.com" className="footer-contact-item footer-contact-link">
-                hello@resoneraai.com
+              <a href="mailto:hello@resoneraaipvtltd.in" className="footer-contact-item footer-contact-link">
+                hello@resoneraaipvtltd.in
               </a>
-              <span className="footer-contact-item">+91 98000 00000</span>
+              <span className="footer-contact-item">  </span>
               <span className="footer-contact-item footer-address">
-                Borivali East,<br />Mumbai – 400066,<br />Maharashtra, India
+                Borivali East,<br />
+                Mumbai – 400066,<br />
+                Maharashtra, India
+              </span>
+              <span className="footer-jurisdiction">
+                Jurisdiction: Mumbai, IN
               </span>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* ── Legal & Compliance Bar ── */}
         <div className="footer-bottom">
-          <span className="footer-copy">
-            © ResoneraAI Pvt. Ltd. All rights reserved.
-          </span>
+          <div className="footer-legal-group">
+            <span className="footer-copy">
+              © ResoneraAI Private Limited.
+            </span>
+            
+          </div>
+          
           <div className="footer-legal">
-            <button className="footer-legal-link" onClick={() => onNav("legal")}>Privacy</button>
-            <button className="footer-legal-link" onClick={() => onNav("legal")}>Terms</button>
+            <button className="footer-legal-link" onClick={() => onNav("legal")}>Data Practices</button>
+            <button className="footer-legal-link" onClick={() => onNav("legal")}>Privacy & Terms</button>
           </div>
         </div>
       </footer>
 
       <style>{`
-        /* ── Design tokens ─────────────────────────── */
         .footer {
-          --rose-50:  #fff5f7;
+          --rose-50: #fff5f7;
           --rose-100: #ffe4ea;
           --rose-200: #ffc1cc;
           --rose-500: #e8294c;
-          --rose-600: #c41f3e;
-          --text-primary:   #1a1014;
+          --text-primary: #1a1014;
           --text-secondary: #6b5059;
-          --text-muted:     #9d8089;
-          --border-soft:    rgba(232, 41, 76, 0.12);
+          --text-muted: #9d8089;
+          --border-soft: rgba(232, 41, 76, 0.12);
 
           font-family: 'DM Sans', system-ui, sans-serif;
           background: var(--rose-50);
-          padding: 0 24px 0;
+          padding: 0 24px;
         }
 
-        /* ── Top rule ──────────────────────────────── */
         .footer-rule {
           max-width: 1120px;
           margin: 0 auto;
@@ -99,7 +102,6 @@ export default function Footer({ onNav }) {
           background: var(--border-soft);
         }
 
-        /* ── Inner grid ────────────────────────────── */
         .footer-inner {
           max-width: 1120px;
           margin: 0 auto;
@@ -109,7 +111,6 @@ export default function Footer({ onNav }) {
           gap: 48px;
         }
 
-        /* ── Brand ─────────────────────────────────── */
         .footer-logo {
           display: flex;
           align-items: center;
@@ -118,106 +119,68 @@ export default function Footer({ onNav }) {
           border: none;
           cursor: pointer;
           padding: 0;
-          margin-bottom: 20px;
+          margin-bottom: 16px;
         }
 
         .footer-logo-img {
-          width: 67px;
-          height: 52px;
-          border-radius: 9px;
+          width: 60px;
+          height: 48px;
+          border-radius: 8px;
           object-fit: cover;
-          border: 0.4px solid var(--rose-200);
+          border: 1px solid var(--rose-100);
         }
 
         .footer-logo-name {
-          font-size: 1.05rem;
+          font-size: 1rem;
           font-weight: 700;
-          letter-spacing: -0.02em;
           color: var(--text-primary);
         }
 
         .footer-tagline {
-          font-size: 0.95rem;
-          line-height: 1.65;
+          font-size: 0.9rem;
+          line-height: 1.6;
           color: var(--text-secondary);
-          margin: 0 0 28px;
-          max-width: 240px;
+          margin-bottom: 16px;
         }
 
-        .footer-social {
-          display: flex;
-          gap: 4px;
-        }
-
-        .footer-social-link {
-          font-size: 0.78rem;
-          font-weight: 500;
-          letter-spacing: 0.01em;
-          color: var(--text-muted);
-          text-decoration: none;
-          padding: 5px 10px;
-          border-radius: 20px;
-          border: 1px solid var(--border-soft);
-          transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-        }
-
-        .footer-social-link:hover {
+        .footer-status-tag {
+          display: inline-block;
+          font-size: 0.7rem;
           color: var(--rose-500);
-          border-color: var(--rose-200);
           background: var(--rose-100);
+          padding: 4px 10px;
+          border-radius: 4px;
+          font-weight: 600;
         }
 
-        /* ── Column heading ────────────────────────── */
         .footer-col-heading {
           font-size: 0.7rem;
-          font-weight: 600;
-          letter-spacing: 0.1em;
+          font-weight: 700;
           text-transform: uppercase;
+          letter-spacing: 0.08em;
           color: var(--rose-500);
-          margin: 0 0 20px;
+          margin-bottom: 24px;
         }
 
-        /* ── Navigation links ──────────────────────── */
         .footer-nav {
           display: flex;
           flex-direction: column;
-          gap: 2px;
+          gap: 8px;
         }
 
         .footer-nav-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 0.9rem;
-          color: var(--text-secondary);
           background: none;
           border: none;
-          cursor: pointer;
-          padding: 6px 0;
+          color: var(--text-secondary);
+          font-size: 0.9rem;
           text-align: left;
-          transition: color 0.16s ease, transform 0.16s ease;
-          width: fit-content;
+          cursor: pointer;
+          padding: 4px 0;
+          transition: 0.2s;
         }
 
-        .footer-nav-link::before {
-          content: '';
-          display: block;
-          width: 0;
-          height: 1px;
-          background: var(--rose-500);
-          transition: width 0.2s ease;
-          flex-shrink: 0;
-        }
+        .footer-nav-link:hover { color: var(--rose-500); }
 
-        .footer-nav-link:hover {
-          color: var(--rose-500);
-        }
-
-        .footer-nav-link:hover::before {
-          width: 12px;
-        }
-
-        /* ── Contact ───────────────────────────────── */
         .footer-contact-list {
           display: flex;
           flex-direction: column;
@@ -225,89 +188,59 @@ export default function Footer({ onNav }) {
         }
 
         .footer-contact-item {
-          font-size: 0.88rem;
+          font-size: 0.85rem;
           color: var(--text-secondary);
-          line-height: 1.55;
         }
 
         .footer-contact-link {
           text-decoration: none;
-          transition: color 0.16s ease;
+          font-weight: 500;
         }
 
-        .footer-contact-link:hover {
-          color: var(--rose-500);
-        }
+        .footer-contact-link:hover { color: var(--rose-500); }
 
-        .footer-address {
+        .footer-address { color: var(--text-muted); line-height: 1.5; }
+
+        .footer-jurisdiction {
+          font-size: 0.75rem;
           color: var(--text-muted);
-          font-size: 0.84rem;
+          border-top: 1px solid var(--border-soft);
+          padding-top: 8px;
+          margin-top: 4px;
         }
 
-        /* ── Bottom bar ────────────────────────────── */
         .footer-bottom {
           max-width: 1120px;
           margin: 0 auto;
-          padding: 20px 0 32px;
+          padding: 24px 0 40px;
           border-top: 1px solid var(--border-soft);
           display: flex;
-          align-items: center;
           justify-content: space-between;
-          gap: 16px;
+          align-items: center;
         }
 
-        .footer-copy {
-          font-size: 0.78rem;
-          color: var(--text-muted);
-        }
+        .footer-legal-group { display: flex; flex-direction: column; gap: 4px; }
 
-        .footer-legal {
-          display: flex;
-          gap: 20px;
-        }
+        .footer-copy { font-size: 0.75rem; color: var(--text-primary); font-weight: 500; }
+
+        .footer-update-tag { font-size: 0.7rem; color: var(--text-muted); }
+
+        .footer-legal { display: flex; gap: 24px; }
 
         .footer-legal-link {
-          font-size: 0.78rem;
-          color: var(--text-muted);
           background: none;
           border: none;
+          font-size: 0.75rem;
+          color: var(--text-muted);
           cursor: pointer;
-          padding: 0;
-          transition: color 0.16s ease;
+          transition: 0.2s;
         }
 
-        .footer-legal-link:hover {
-          color: var(--rose-500);
-        }
+        .footer-legal-link:hover { color: var(--rose-500); }
 
-        /* ── Responsive ────────────────────────────── */
-        @media (max-width: 860px) {
-          .footer-inner {
-            grid-template-columns: 1fr 1fr;
-            padding: 56px 0 40px;
-          }
-
-          .footer-brand {
-            grid-column: 1 / -1;
-          }
-
-          .footer-tagline {
-            max-width: 100%;
-          }
-        }
-
-        @media (max-width: 520px) {
-          .footer-inner {
-            grid-template-columns: 1fr;
-            gap: 36px;
-            padding: 48px 0 36px;
-          }
-
-          .footer-bottom {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
-          }
+        @media (max-width: 768px) {
+          .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+          .footer-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
         }
       `}</style>
     </>

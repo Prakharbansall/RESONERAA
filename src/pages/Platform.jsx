@@ -6,16 +6,16 @@ import CTAButton from "../components/CTAButton";
 ───────────────────────────────────────────────────────── */
 function Terminal() {
   const lines = [
-    { t:0,    text:"$ resonera init --project fraud-detection",   type:"cmd" },
-    { t:700,  text:"✓ Project initialized",                        type:"ok"  },
-    { t:1300, text:"$ resonera data ingest --source postgres://…", type:"cmd" },
-    { t:2000, text:"✓ 847,293 records loaded in 2.1s",             type:"ok"  },
-    { t:2700, text:"$ resonera train --model xgboost --target fraud", type:"cmd" },
-    { t:3400, text:"  Training… ████████████████ 100%",            type:"dim" },
-    { t:4100, text:"✓ AUC-ROC: 0.974  Precision: 0.91",           type:"ok"  },
-    { t:4800, text:"$ resonera deploy --env production",           type:"cmd" },
-    { t:5500, text:"✓ Live at api.resonera.ai/v1/predict",         type:"ok"  },
-    { t:6200, text:"✓ Latency: 38ms  Throughput: 2,400 req/s",    type:"ok"  },
+    { t:0,    text:"$ resonera init --project ai-system",          type:"cmd" },
+    { t:700,  text:"✓ Project structure initialised",               type:"ok"  },
+    { t:1300, text:"$ resonera data connect --source postgres://…", type:"cmd" },
+    { t:2000, text:"✓ Data source connected and structured",        type:"ok"  },
+    { t:2700, text:"$ resonera model explore --dataset prepared",   type:"cmd" },
+    { t:3400, text:"  Experimenting… ████████████████ 100%",        type:"dim" },
+    { t:4100, text:"✓ Model behaviour observed and logged",         type:"ok"  },
+    { t:4800, text:"$ resonera output structure --workflow active", type:"cmd" },
+    { t:5500, text:"✓ Outputs structured and connected",            type:"ok"  },
+    { t:6200, text:"✓ System monitoring active- refining ongoing", type:"ok"  },
   ];
 
   const [visible, setVisible] = useState([]);
@@ -38,9 +38,9 @@ function Terminal() {
           <span className="term-dot term-dot--y" />
           <span className="term-dot term-dot--g" />
         </div>
-        <span className="term-title">resonera_cli - production</span>
+        <span className="term-title">resonera_platform - development</span>
         <span className="term-live">
-          <span className="term-live-dot" />LIVE
+          <span className="term-live-dot" />ACTIVE
         </span>
       </div>
       <div className="term-body">
@@ -54,20 +54,20 @@ function Terminal() {
 }
 
 /* ─────────────────────────────────────────────────────────
-   Architecture diagram - SVG-like CSS panels
+   Architecture diagram
 ───────────────────────────────────────────────────────── */
 function ArchDiagram({ active }) {
   const layers = [
-    { label:"Data Layer",    items:["Raw Data","Feature Store","Vector DB"],    highlight: active === "ML Engine" || active === "Overview" },
-    { label:"Model Layer",   items:["ML Engine","NLP Suite","CV Models"],        highlight: active === "ML Engine" || active === "NLP Suite" || active === "Overview" },
-    { label:"Serve Layer",   items:["REST API","Streaming","Batch"],             highlight: active === "Integrations" || active === "Overview" },
-    { label:"Observe Layer", items:["Monitoring","Drift Detection","Audit Log"], highlight: active === "Security" || active === "Overview" },
+    { label:"Data Layer",    items:["Raw Data","Dataset Prep","Data Sources"],        highlight: active === "Data Layer"    || active === "Overview" },
+    { label:"Model Layer",   items:["Model Dev","Experimentation","Evaluation"],      highlight: active === "Model Layer"   || active === "Overview" },
+    { label:"Serve Layer",   items:["APIs & Outputs","Workflow Links","System Comms"],highlight: active === "Serve Layer"   || active === "Overview" },
+    { label:"Observe Layer", items:["Performance","Data Patterns","Refinement"],      highlight: active === "Observe Layer" || active === "Overview" },
   ];
 
   return (
     <div className="arch-wrap">
       <p className="arch-heading">Platform Architecture</p>
-      {layers.map((l, i) => (
+      {layers.map((l) => (
         <div key={l.label} className={`arch-row ${l.highlight ? "arch-row--active" : ""}`}>
           <span className="arch-layer-label">{l.label}</span>
           <div className="arch-items">
@@ -84,46 +84,107 @@ function ArchDiagram({ active }) {
 /* ─────────────────────────────────────────────────────────
    Data
 ───────────────────────────────────────────────────────── */
-const tabs = ["Overview", "ML Engine", "NLP Suite", "Integrations", "Security"];
+const tabs = ["Overview", "Data Layer", "Model Layer", "Serve Layer", "Observe Layer"];
 
 const tabContent = {
   Overview: {
-    title:    "One platform. Every AI need.",
-    desc:     "Unified AI infrastructure designed for real business - modular, scalable, and production-ready from day one. Train, deploy, monitor, and iterate on every AI system your business needs.",
-    features: ["Unified model management & versioning","Real-time inference APIs (< 50ms latency)","No-code experimentation dashboard","Enterprise-grade security & compliance","Continuous learning & drift detection","Multi-cloud and on-premise deployment","Built-in explainability & audit trails","Role-based access control (RBAC)"],
+    title:    "One platform. A structured way to explore AI systems.",
+    desc:     "Artificial intelligence systems often involve multiple layers working together. The platform is being developed to bring these layers into a single, structured environment where they can be understood and managed more effectively. The focus is on creating clarity in how systems are designed, rather than increasing complexity.",
+    features: [
+      "Organising and preparing data",
+      "Experimenting with different model approaches",
+      "Structuring outputs and workflows",
+      "Monitoring system behaviour and performance",
+      "Unified framework rather than separate tools",
+      "Understanding how AI systems behave over time",
+      "Continuous improvement through observation",
+      "Aligned with real-world operational needs",
+    ],
   },
-  "ML Engine": {
-    title:    "ML Engine",
-    desc:     "Train, evaluate, and deploy custom machine learning models with automated pipeline tooling. From raw data ingestion to production serving - all in one place.",
-    features: ["AutoML with hyperparameter optimisation","Custom architectures (PyTorch / TensorFlow)","Distributed training on GPU clusters","A/B model testing in production","SHAP-based explainability reporting","One-click model deployment","Data versioning and lineage tracking","Automated retraining triggers"],
+  "Data Layer": {
+    title:    "Data Layer",
+    desc:     "The data layer focuses on how raw and processed data is organised and prepared for use in AI systems. The goal is to ensure data is consistently structured and ready for experimentation across the platform.",
+    features: [
+      "Structuring input data",
+      "Preparing datasets for experimentation",
+      "Maintaining consistency across data sources",
+      "Understanding data pipelines and flows",
+      "Exploring storage structures and formats",
+      "Data preparation techniques and validation",
+      "Organising raw and processed data",
+      "Supporting long-term data usability",
+    ],
   },
-  "NLP Suite": {
-    title:    "NLP Suite",
-    desc:     "State-of-the-art natural language processing for text, documents, and conversational AI. Fine-tune frontier LLMs on your proprietary data without data leakage.",
-    features: ["LLM fine-tuning on private data","Document classification & extraction","Sentiment and intent analysis","Multilingual support (20+ languages)","Conversational AI / chatbot builder","Semantic search & vector embeddings","Named entity recognition (NER)","RAG (Retrieval Augmented Generation)"],
+  "Model Layer": {
+    title:    "Model Layer",
+    desc:     "The model layer explores how different AI models can be developed, tested, and refined. Rather than focusing only on outputs, the emphasis is on understanding how models behave and how they can be improved over time.",
+    features: [
+      "Experimenting with different model approaches",
+      "Understanding model behaviour in context",
+      "Evaluating outputs based on defined criteria",
+      "Iterative model refinement through observation",
+      "Structured experimentation workflows",
+      "Tracking model performance over time",
+      "Testing ideas through controlled prototypes",
+      "Continuous improvement through iteration",
+    ],
   },
-  Integrations: {
-    title:    "Integrations",
-    desc:     "Connect Resonera to your existing technology stack with pre-built connectors and a robust REST & GraphQL API. Your infrastructure stays intact.",
-    features: ["REST & GraphQL API access","Webhook and event streaming","Salesforce, HubSpot, SAP connectors","AWS, Azure, GCP native integration","PostgreSQL, MongoDB, BigQuery","Custom SDK (Python, Node.js, Java)","Zapier and n8n workflow support","OpenAPI 3.0 spec included"],
+  "Serve Layer": {
+    title:    "Serve Layer",
+    desc:     "The serve layer is focused on how AI outputs are delivered and integrated into workflows. This includes structuring how systems communicate and connect with other tools and environments.",
+    features: [
+      "Structuring APIs and outputs",
+      "Connecting AI systems with other tools",
+      "Enabling interaction between systems",
+      "Designing output delivery workflows",
+      "Integrating AI into existing operational environments",
+      "Complementing rather than replacing existing workflows",
+      "Structuring system communication layers",
+      "Exploring integration patterns and approaches",
+    ],
   },
-  Security: {
-    title:    "Security & Compliance",
-    desc:     "Enterprise-grade security baked in at every layer - from data at rest to model outputs. Your data sovereignty is non-negotiable.",
-    features: ["AES-256 encryption at rest & in transit","SOC 2 Type II ready architecture","GDPR-compliant data processing","On-premise & private cloud options","End-to-end audit logging","Zero-trust network architecture","Model output redaction controls","Data residency in India available"],
+  "Observe Layer": {
+    title:    "Observe Layer",
+    desc:     "The observation layer focuses on monitoring system behaviour and identifying areas for improvement. Observation is central to the platform's philosophy of continuous, structured refinement.",
+    features: [
+      "Tracking performance over time",
+      "Identifying changes in data patterns",
+      "Refining system behaviour through observation",
+      "Monitoring interactions between layers",
+      "Understanding how systems evolve",
+      "Detecting areas requiring adjustment",
+      "Supporting continuous improvement cycles",
+      "Building foundational observability practices",
+    ],
   },
 };
 
 const deployOptions = [
-  { icon:"☁", title:"Cloud Managed",  desc:"Fully managed SaaS on our secure multi-region cloud. Zero infra ops, instant scale.", tag:"Easiest" },
-  { icon:"⬡", title:"Private Cloud",  desc:"Deploy inside your own AWS, Azure, or GCP account. Full control, no data leaves your environment.", tag:"Most Popular" },
-  { icon:"⬢", title:"On-Premise",     desc:"Air-gapped on-premise deployment for banking, defence, and maximum data sovereignty.", tag:"Most Secure" },
+  { icon:"☁", title:"Cloud-based environments", desc:"Exploring flexible infrastructure setups that support scalability and accessibility.", tag:"Exploratory" },
+  { icon:"⬡", title:"Private environments",      desc:"Understanding how systems can be structured within controlled infrastructure.",           tag:"Exploratory" },
+  { icon:"⬢", title:"Local environments",        desc:"Exploring setups where systems operate within limited or isolated environments.",          tag:"Exploratory" },
 ];
 
-const pricing = [
-  { name:"Starter",    desc:"For teams exploring AI",              features:["Up to 3 AI models","100K API calls/month","Community support","Standard integrations"],                                                             cta:"Contact Sales" },
-  { name:"Growth",     desc:"For scaling AI-first businesses",     features:["Unlimited models","5M API calls/month","Priority support (24h SLA)","All integrations","Dedicated account manager"],          featured:true, cta:"Get Started"   },
-  { name:"Enterprise", desc:"For mission-critical deployments",    features:["Everything in Growth","On-premise deployment","Custom SLA","Dedicated infrastructure","Professional services included"],                          cta:"Contact Sales" },
+const statusCards = [
+  {
+    icon:"⬡",
+    title:"Building foundational components",
+    desc:"Core system components are being developed and tested, forming the base of the platform architecture.",
+    status:"In Progress",
+  },
+  {
+    icon:"◈",
+    title:"Understanding layer interactions",
+    desc:"Work is ongoing to understand how the data, model, serve, and observe layers interact within a unified system.",
+    status:"In Progress",
+    featured: true,
+  },
+  {
+    icon:"⊕",
+    title:"Refining through iteration",
+    desc:"Each development cycle contributes to refining the system's structure and behaviour. As development progresses, these components are expected to evolve further.",
+    status:"Ongoing",
+  },
 ];
 
 /* ─────────────────────────────────────────────────────────
@@ -145,27 +206,26 @@ export default function Platform({ onNav }) {
               <em className="plt-em">for the real world.</em>
             </h1>
             <p className="plt-hero-sub">
-              The Resonera Platform gives your team the tools to build, deploy,
-              and manage AI at scale - without the complexity, cost, and risk
-              of building from scratch.
+              The Resonera platform is being developed as a structured environment
+              where artificial intelligence systems can be explored, organised, and
+              refined over time- moving away from fragmented experimentation and
+              towards a more unified approach where data, models, and workflows are
+              connected within a single system.
             </p>
             <div className="plt-hero-ctas">
-              <CTAButton size="lg" onClick={() => onNav("contact")}>Request Demo</CTAButton>
-              <CTAButton size="lg" variant="outline" onClick={() => onNav("contact")}>Talk to Sales</CTAButton>
+              <CTAButton size="lg" onClick={() => onNav("contact")}>Start a Conversation</CTAButton>
+              <CTAButton size="lg" variant="outline" onClick={() => onNav("contact")}>Learn More</CTAButton>
             </div>
           </div>
           <div className="plt-hero-terminal">
             <Terminal />
           </div>
         </div>
-
-
       </section>
 
-      {/* ══ §2 TABS - capabilities explorer ═══════════════ */}
+      {/* ══ §2 TABS ════════════════════════════════════════ */}
       <section className="plt-caps">
         <div className="pg-wrap">
-          {/* Tab bar */}
           <div className="plt-tab-bar">
             {tabs.map(t => (
               <button
@@ -178,7 +238,6 @@ export default function Platform({ onNav }) {
             ))}
           </div>
 
-          {/* Content */}
           <div className="plt-cap-grid" key={activeTab}>
             <div className="plt-cap-left">
               <h2 className="h2">{content.title}</h2>
@@ -195,8 +254,8 @@ export default function Platform({ onNav }) {
                 ))}
               </ul>
               <div className="plt-cap-ctas">
-                <CTAButton onClick={() => onNav("contact")}>Get Access</CTAButton>
-                <CTAButton variant="outline" onClick={() => onNav("contact")}>Request Demo</CTAButton>
+                <CTAButton onClick={() => onNav("contact")}>Start a Conversation</CTAButton>
+                <CTAButton variant="outline" onClick={() => onNav("contact")}>Learn More</CTAButton>
               </div>
             </div>
             <div className="plt-cap-right">
@@ -206,16 +265,17 @@ export default function Platform({ onNav }) {
         </div>
       </section>
 
-      {/* ══ §3 STATEMENT - bold claim ══════════════════════ */}
+      {/* ══ §3 STATEMENT ═══════════════════════════════════ */}
       <section className="plt-statement">
         <div className="pg-wrap">
           <blockquote className="plt-statement-inner">
             <p className="plt-statement-text">
-              Enterprise AI shouldn't require a team of PhDs and
-              18 months of infra work. We built Resonera so it doesn't.
+              Rather than focusing only on outputs, the platform is being designed
+              to help understand how AI systems behave, how they evolve, and how
+              they can be improved continuously.
             </p>
             <footer className="plt-statement-foot">
-              <span className="plt-statement-author">ResoneraAI Engineering Team</span>
+              <span className="plt-statement-author">ResoneraAI Platform Team</span>
             </footer>
           </blockquote>
         </div>
@@ -227,11 +287,12 @@ export default function Platform({ onNav }) {
           <div className="plt-deploy-head">
             <div>
               <span className="eyebrow">Deployment Options</span>
-              <h2 className="h2">Deploy anywhere,<br /><span className="rose">your way.</span></h2>
+              <h2 className="h2">Exploratory<br /><span className="rose">deployment stages.</span></h2>
             </div>
             <p className="plt-deploy-desc">
-              Every organisation has different infrastructure constraints and
-              security requirements. Resonera meets you where you are.
+              Different environments are being considered as part of the platform's
+              development, based on varying operational needs. These options are
+              currently at an exploratory stage and will be refined over time.
             </p>
           </div>
 
@@ -250,19 +311,19 @@ export default function Platform({ onNav }) {
         </div>
       </section>
 
-      {/* ══ §5 HOW IT WORKS - simple 4-step flow ══════════ */}
+      {/* ══ §5 HOW IT WORKS ════════════════════════════════ */}
       <section className="plt-how">
         <div className="pg-wrap">
           <div className="plt-how-head">
             <span className="eyebrow">How It Works</span>
-            <h2 className="h2">From data to<br /><span className="rose">production in weeks.</span></h2>
+            <h2 className="h2">A structured way to<br /><span className="rose">develop AI systems.</span></h2>
           </div>
           <div className="plt-how-steps">
             {[
-              { n:"01", title:"Connect your data",  desc:"Ingest from databases, warehouses, APIs, or file uploads. We support 40+ source connectors out of the box." },
-              { n:"02", title:"Train your model",    desc:"Use our AutoML wizard or bring your own architecture. Experiment quickly with automated hyperparameter tuning." },
-              { n:"03", title:"Deploy to production",desc:"One-click deployment to your chosen infrastructure. REST API live in minutes, not months." },
-              { n:"04", title:"Monitor and improve", desc:"Real-time dashboards, drift alerts, and automated retraining keep your model performing over time." },
+              { n:"01", title:"Connect Data",      desc:"Understanding how different data sources can be brought into a structured system, ensuring consistency and usability across the platform." },
+              { n:"02", title:"Explore Models",    desc:"Experimenting with how models behave when applied to structured datasets, observing the results, and identifying areas for improvement." },
+              { n:"03", title:"Structure Outputs", desc:"Designing how outputs can be used within workflows and systems, connecting AI components to existing operational environments." },
+              { n:"04", title:"Monitor & Refine",  desc:"Observing system behaviour over time and making continuous improvements based on what is learned through each iteration." },
             ].map((s, i) => (
               <div key={s.n} className="plt-step">
                 <div className="plt-step-track">
@@ -277,52 +338,31 @@ export default function Platform({ onNav }) {
         </div>
       </section>
 
-      {/* ══ §6 PRICING ═════════════════════════════════════ */}
+      {/* ══ §6 CURRENT STATUS ══════════════════════════════ */}
       <section className="plt-pricing">
         <div className="pg-wrap">
           <div className="plt-pricing-head">
-            <span className="eyebrow">Pricing</span>
-            <h2 className="h2">Simple, transparent<br /><span className="rose">pricing.</span></h2>
+            <span className="eyebrow">Current Status</span>
+            <h2 className="h2">Platform under<br /><span className="rose">active development.</span></h2>
             <p className="plt-pricing-sub">
-              All plans are custom-quoted based on your use case.
-              No hidden fees, no lock-in, no surprise billing.
+              The platform is currently under development, with ongoing work focused
+              on building foundational system components, understanding interactions
+              between layers, and refining structure through iteration. As development
+              progresses, these components are expected to evolve further.
             </p>
           </div>
 
-          <div className="pricing-grid">
-            {pricing.map(p => (
-              <div key={p.name} className={`pricing-card ${p.featured ? "pricing-card--featured" : ""}`}>
-                {p.featured && <span className="pricing-badge">Most Popular</span>}
-                <h3 className="pricing-name">{p.name}</h3>
+          <div className="status-grid">
+            {statusCards.map(p => (
+              <div key={p.title} className={`pricing-card ${p.featured ? "pricing-card--featured" : ""}`}>
+                {p.featured && <span className="pricing-badge">Active Focus</span>}
+                <span className="status-icon">{p.icon}</span>
+                <h3 className="pricing-name">{p.title}</h3>
                 <p className="pricing-desc">{p.desc}</p>
-                <ul className="pricing-features">
-                  {p.features.map(f => (
-                    <li key={f} className="pricing-feature">
-                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8l4 4 6-6" stroke="currentColor" strokeWidth="1.8"
-                          strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className={`pricing-cta ${p.featured ? "pricing-cta--featured" : ""}`}
-                  onClick={() => onNav("contact")}
-                >
-                  {p.cta}
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6"
-                      strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
+                <span className="status-tag">{p.status}</span>
               </div>
             ))}
           </div>
-
-          <p className="pricing-footnote">
-            Not sure which plan fits? <button className="pricing-footnote-link" onClick={() => onNav("contact")}>Book a free discovery call</button> and we'll recommend the right fit.
-          </p>
         </div>
       </section>
 
@@ -330,17 +370,17 @@ export default function Platform({ onNav }) {
       <section className="plt-cta">
         <div className="pg-wrap plt-cta-inner">
           <div>
-            <span className="eyebrow" style={{color:"rgba(255,255,255,.55)"}}>Ready?</span>
+            <span className="eyebrow" style={{color:"rgba(255,255,255,.55)"}}>Ready to explore?</span>
             <h2 className="h2" style={{color:"#fff", marginBottom:12}}>
-              See Resonera in action.
+              Let's discuss how structured AI<br />systems can work for you.
             </h2>
             <p className="plt-cta-sub">
-              30-minute live demo. No slides. No fluff. Just the platform.
+              Free discussion. No commitment. We'd love to understand your operational
+              environment and explore what's possible together.
             </p>
           </div>
           <div className="plt-cta-buttons">
-            <CTAButton size="lg" onClick={() => onNav("contact")}>Book a Demo</CTAButton>
-            
+            <CTAButton size="lg" onClick={() => onNav("contact")}>Start a Conversation</CTAButton>
           </div>
         </div>
         <span className="plt-cta-deco" aria-hidden="true">◈</span>
@@ -413,14 +453,11 @@ export default function Platform({ onNav }) {
         }
 
         .plt-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-
-        /* Terminal */
         .plt-hero-terminal { position: relative; }
 
         .term-wrap {
           background: #1a1014;
-          border-radius: 16px;
-          overflow: hidden;
+          border-radius: 16px; overflow: hidden;
           border: 1px solid rgba(232,41,76,0.15);
           box-shadow: 0 8px 48px rgba(232,41,76,0.08), 0 2px 8px rgba(0,0,0,0.12);
         }
@@ -465,7 +502,6 @@ export default function Platform({ onNav }) {
         }
 
         .term-line { animation: term-in .25s ease forwards; }
-
         @keyframes term-in { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:translateY(0)} }
 
         .term-line--cmd { color: #ffc1cc; }
@@ -479,37 +515,7 @@ export default function Platform({ onNav }) {
 
         @keyframes blink-c { 0%,100%{opacity:.9} 50%{opacity:0} }
 
-        /* Metrics strip */
-        .plt-metrics-strip {
-          display: grid; grid-template-columns: repeat(4, 1fr);
-          border-top: 1px solid var(--bs);
-          padding: 0;
-        }
-
-        .plt-metric {
-          padding: 32px 0 32px 24px;
-          border-left: 1px solid var(--bs);
-          transition: background .18s ease;
-        }
-
-        .plt-metric:first-child { border-left: none; padding-left: 0; }
-        .plt-metric:hover { background: var(--r50); }
-
-        .plt-metric-val {
-          display: block;
-          font-family: 'DM Serif Display', Georgia, serif;
-          font-size: 1.8rem; font-weight: 400;
-          color: var(--r5); line-height: 1; letter-spacing: -.02em;
-          margin-bottom: 4px;
-        }
-
-        .plt-metric-label {
-          font-family: 'DM Sans', system-ui, sans-serif;
-          font-size: .72rem; font-weight: 500; color: var(--tm);
-          letter-spacing: .04em;
-        }
-
-        /* ── §2 CAPABILITIES TABS ──────────────────────── */
+        /* ── §2 TABS ───────────────────────────────────── */
         .plt-caps {
           background: #fff;
           padding: 80px 60px;
@@ -519,8 +525,7 @@ export default function Platform({ onNav }) {
         .plt-tab-bar {
           display: flex; gap: 0;
           border-bottom: 1px solid var(--bs);
-          margin-bottom: 64px;
-          overflow-x: auto;
+          margin-bottom: 64px; overflow-x: auto;
         }
 
         .plt-tab {
@@ -568,18 +573,15 @@ export default function Platform({ onNav }) {
           display: flex; align-items: center; gap: 12px;
           font-family: 'DM Sans', system-ui, sans-serif;
           font-size: .9rem; color: var(--ts);
-          padding: 12px 0;
-          border-bottom: 1px solid var(--bs);
+          padding: 12px 0; border-bottom: 1px solid var(--bs);
         }
 
         .plt-cap-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
-        /* Arch diagram */
         .arch-wrap {
           background: var(--cr);
           border: 1px solid var(--bs);
-          border-radius: 16px;
-          padding: 32px 28px;
+          border-radius: 16px; padding: 32px 28px;
           display: flex; flex-direction: column; gap: 12px;
         }
 
@@ -605,7 +607,6 @@ export default function Platform({ onNav }) {
         }
 
         .arch-row--active .arch-layer-label { color: var(--r5); }
-
         .arch-items { display: flex; gap: 6px; flex-wrap: wrap; }
 
         .arch-item {
@@ -619,21 +620,17 @@ export default function Platform({ onNav }) {
 
         .arch-item--active {
           color: var(--r5); background: var(--r100);
-          border-color: var(--r200);
-          font-weight: 600;
+          border-color: var(--r200); font-weight: 600;
         }
 
         /* ── §3 STATEMENT ──────────────────────────────── */
         .plt-statement {
-          background: var(--r50);
-          padding: 80px 60px;
+          background: var(--r50); padding: 80px 60px;
           border-top: 1px solid var(--bs);
           border-bottom: 1px solid var(--bs);
         }
 
-        .plt-statement-inner {
-          max-width: 800px; margin: 0 auto;
-        }
+        .plt-statement-inner { max-width: 800px; margin: 0 auto; }
 
         .plt-statement-text {
           font-family: 'DM Serif Display', Georgia, serif;
@@ -643,8 +640,6 @@ export default function Platform({ onNav }) {
           letter-spacing: -.01em; margin-bottom: 24px;
         }
 
-        .plt-statement-foot {}
-
         .plt-statement-author {
           font-family: 'DM Sans', system-ui, sans-serif;
           font-size: .88rem; font-weight: 600; color: var(--r5);
@@ -652,8 +647,7 @@ export default function Platform({ onNav }) {
 
         /* ── §4 DEPLOY OPTIONS ─────────────────────────── */
         .plt-deploy {
-          background: #fff;
-          padding: 100px 60px;
+          background: #fff; padding: 100px 60px;
           border-bottom: 1px solid var(--bs);
         }
 
@@ -676,12 +670,10 @@ export default function Platform({ onNav }) {
 
         .deploy-card {
           background: #fff; padding: 48px 36px;
-          transition: background .18s ease;
-          position: relative;
+          transition: background .18s ease; position: relative;
         }
 
         .deploy-card:hover { background: var(--r50); }
-
         .deploy-card--featured { background: var(--cr); }
         .deploy-card--featured:hover { background: var(--r50); }
 
@@ -713,8 +705,7 @@ export default function Platform({ onNav }) {
 
         /* ── §5 HOW IT WORKS ───────────────────────────── */
         .plt-how {
-          background: var(--cr);
-          padding: 100px 60px;
+          background: var(--cr); padding: 100px 60px;
           border-bottom: 1px solid var(--bs);
         }
 
@@ -727,35 +718,28 @@ export default function Platform({ onNav }) {
 
         .plt-step {
           padding: 40px 32px 40px 0;
-          border-right: 1px solid var(--bs);
-          position: relative;
+          border-right: 1px solid var(--bs); position: relative;
         }
 
         .plt-step:last-child { border-right: none; padding-right: 0; }
         .plt-step:not(:first-child) { padding-left: 32px; }
 
         .plt-step-track {
-          display: flex; align-items: center; gap: 12px;
-          margin-bottom: 18px;
+          display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
         }
 
         .plt-step-n {
           font-family: 'DM Serif Display', Georgia, serif;
           font-size: 2rem; font-weight: 400; color: var(--r200);
-          line-height: 1; letter-spacing: -.03em;
-          transition: color .2s ease;
+          line-height: 1; letter-spacing: -.03em; transition: color .2s ease;
         }
 
         .plt-step:hover .plt-step-n { color: var(--r5); }
-
-        .plt-step-connector {
-          flex: 1; height: 1px; background: var(--bs);
-        }
+        .plt-step-connector { flex: 1; height: 1px; background: var(--bs); }
 
         .plt-step-title {
           font-family: 'DM Serif Display', Georgia, serif;
-          font-size: 1.1rem; font-weight: 400; color: var(--tp);
-          margin-bottom: 10px;
+          font-size: 1.1rem; font-weight: 400; color: var(--tp); margin-bottom: 10px;
         }
 
         .plt-step-desc {
@@ -763,10 +747,9 @@ export default function Platform({ onNav }) {
           font-size: .875rem; color: var(--ts); line-height: 1.78; margin: 0;
         }
 
-        /* ── §6 PRICING ────────────────────────────────── */
+        /* ── §6 CURRENT STATUS ─────────────────────────── */
         .plt-pricing {
-          background: #fff;
-          padding: 100px 60px;
+          background: #fff; padding: 100px 60px;
           border-bottom: 1px solid var(--bs);
         }
 
@@ -775,31 +758,27 @@ export default function Platform({ onNav }) {
         .plt-pricing-sub {
           font-family: 'DM Sans', system-ui, sans-serif;
           font-size: 1rem; color: var(--ts); line-height: 1.75;
-          max-width: 420px; margin: 0;
+          max-width: 520px; margin: 0;
         }
 
-        .pricing-grid {
+        .status-grid {
           display: grid; grid-template-columns: repeat(3, 1fr);
           gap: 1px; background: var(--bs);
           border: 1px solid var(--bs);
-          border-radius: 20px; overflow: visible;
-          position: relative;
+          border-radius: 20px; overflow: visible; position: relative;
         }
 
         .pricing-card {
           background: #fff; padding: 48px 36px;
           display: flex; flex-direction: column;
-          position: relative;
-          transition: background .18s ease;
+          position: relative; transition: background .18s ease;
         }
 
         .pricing-card:hover { background: var(--r50); }
 
         .pricing-card--featured {
           background: var(--r5);
-          border-radius: 0;
-          margin: -20px 0;
-          padding: 68px 36px;
+          margin: -20px 0; padding: 68px 36px;
           z-index: 1;
           box-shadow: 0 8px 40px rgba(232,41,76,0.2);
         }
@@ -810,89 +789,51 @@ export default function Platform({ onNav }) {
           display: inline-block;
           font-family: 'DM Sans', system-ui, sans-serif;
           font-size: .62rem; font-weight: 700; letter-spacing: .1em;
-          text-transform: uppercase;
-          color: #fff; background: rgba(255,255,255,.2);
-          border-radius: 20px; padding: 3px 10px;
-          margin-bottom: 16px;
+          text-transform: uppercase; color: #fff;
+          background: rgba(255,255,255,.2);
+          border-radius: 20px; padding: 3px 10px; margin-bottom: 16px;
         }
+
+        .status-icon {
+          display: block; font-size: 1.5rem; color: var(--r5);
+          margin-bottom: 16px; line-height: 1;
+        }
+
+        .pricing-card--featured .status-icon { color: rgba(255,255,255,.85); }
 
         .pricing-name {
           font-family: 'DM Serif Display', Georgia, serif;
-          font-size: 1.5rem; font-weight: 400;
-          color: var(--tp); margin-bottom: 8px; letter-spacing: -.01em;
+          font-size: 1.3rem; font-weight: 400; color: var(--tp);
+          margin-bottom: 12px; letter-spacing: -.01em;
         }
 
         .pricing-card--featured .pricing-name { color: #fff; }
 
         .pricing-desc {
           font-family: 'DM Sans', system-ui, sans-serif;
-          font-size: .88rem; color: var(--ts);
-          margin-bottom: 28px; line-height: 1.6;
+          font-size: .9rem; color: var(--ts);
+          margin-bottom: 28px; line-height: 1.75; flex: 1;
         }
 
-        .pricing-card--featured .pricing-desc { color: rgba(255,255,255,.75); }
+        .pricing-card--featured .pricing-desc { color: rgba(255,255,255,.8); }
 
-        .pricing-features {
-          list-style: none; padding: 0; margin: 0 0 36px;
-          display: flex; flex-direction: column;
-          border-top: 1px solid var(--bs); flex: 1;
-        }
-
-        .pricing-card--featured .pricing-features { border-top-color: rgba(255,255,255,.2); }
-
-        .pricing-feature {
-          display: flex; align-items: center; gap: 10px;
+        .status-tag {
+          display: inline-block;
           font-family: 'DM Sans', system-ui, sans-serif;
-          font-size: .875rem; color: var(--ts);
-          padding: 11px 0; border-bottom: 1px solid var(--bs);
+          font-size: .68rem; font-weight: 700; letter-spacing: .08em;
+          text-transform: uppercase; color: var(--r5);
+          background: var(--r100); border: 1px solid var(--r200);
+          padding: 4px 12px; border-radius: 20px;
+          margin-top: auto; align-self: flex-start;
         }
 
-        .pricing-card--featured .pricing-feature { color: rgba(255,255,255,.88); border-bottom-color: rgba(255,255,255,.15); }
-        .pricing-feature svg { flex-shrink: 0; color: var(--r5); }
-        .pricing-card--featured .pricing-feature svg { color: rgba(255,255,255,.8); }
-
-        .pricing-cta {
-          display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-          padding: 13px 24px;
-          font-family: 'DM Sans', system-ui, sans-serif;
-          font-size: .9rem; font-weight: 600;
-          border-radius: 10px; border: 1.5px solid var(--bm);
-          color: var(--ts); background: none; cursor: pointer;
-          transition: all .16s ease; margin-top: auto;
+        .pricing-card--featured .status-tag {
+          color: var(--r5); background: #fff; border-color: transparent;
         }
-
-        .pricing-cta:hover { color: var(--r5); border-color: var(--r5); background: var(--r50); }
-
-        .pricing-cta--featured {
-          background: #fff; color: var(--r5);
-          border-color: transparent;
-          box-shadow: 0 2px 12px rgba(0,0,0,.1);
-        }
-
-        .pricing-cta--featured:hover { background: var(--r50); }
-
-        .pricing-cta svg { transition: transform .18s ease; }
-        .pricing-cta:hover svg { transform: translateX(3px); }
-
-        .pricing-footnote {
-          font-family: 'DM Sans', system-ui, sans-serif;
-          font-size: .85rem; color: var(--tm);
-          text-align: center; margin-top: 40px;
-        }
-
-        .pricing-footnote-link {
-          font-weight: 600; color: var(--r5); background: none;
-          border: none; cursor: pointer; padding: 0;
-          text-decoration: underline; text-underline-offset: 2px;
-          transition: opacity .16s;
-        }
-
-        .pricing-footnote-link:hover { opacity: .75; }
 
         /* ── §7 CTA ────────────────────────────────────── */
         .plt-cta {
-          background: var(--r5);
-          padding: 100px 60px;
+          background: var(--r5); padding: 100px 60px;
           position: relative; overflow: hidden;
         }
 
@@ -914,17 +855,6 @@ export default function Platform({ onNav }) {
           align-items: flex-start; flex-shrink: 0;
         }
 
-        .plt-cta-ghost {
-          display: inline-flex; align-items: center; gap: 8px;
-          font-family: 'DM Sans', system-ui, sans-serif;
-          font-size: .9rem; font-weight: 500;
-          color: rgba(255,255,255,.8); background: none; border: none;
-          cursor: pointer; padding: 0;
-          transition: color .16s ease;
-        }
-
-        .plt-cta-ghost:hover { color: #fff; }
-
         .plt-cta-deco {
           position: absolute; right: -30px; bottom: -60px;
           font-size: clamp(180px, 22vw, 320px);
@@ -943,9 +873,6 @@ export default function Platform({ onNav }) {
           .plt-hero { padding: 100px 24px 0; }
           .plt-hero-inner { grid-template-columns: 1fr; gap: 40px; padding-bottom: 48px; }
           .plt-h1 { font-size: clamp(2.6rem, 9vw, 4rem); }
-          .plt-metrics-strip { grid-template-columns: 1fr 1fr; }
-          .plt-metric:nth-child(3) { border-left: none; padding-left: 0; }
-          .plt-metric { padding: 24px 0 24px 20px; }
 
           .plt-caps, .plt-statement, .plt-deploy,
           .plt-how, .plt-pricing, .plt-cta { padding-left: 24px; padding-right: 24px; }
@@ -960,7 +887,7 @@ export default function Platform({ onNav }) {
           .plt-step:nth-child(2), .plt-step:nth-child(4) { padding-left: 32px; border-left: 1px solid var(--bs); }
           .plt-step:nth-child(3), .plt-step:nth-child(4) { border-bottom: none; }
 
-          .pricing-grid { grid-template-columns: 1fr; }
+          .status-grid { grid-template-columns: 1fr; }
           .pricing-card--featured { margin: 0; padding: 48px 36px; }
 
           .plt-cta-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
@@ -969,7 +896,6 @@ export default function Platform({ onNav }) {
 
         @media (max-width: 560px) {
           .plt-h1 { font-size: clamp(2.2rem, 10vw, 3.2rem); }
-          .plt-metrics-strip { grid-template-columns: 1fr 1fr; }
           .plt-how-steps { grid-template-columns: 1fr; }
           .plt-step:nth-child(2), .plt-step:nth-child(4) { padding-left: 0; border-left: none; }
           .plt-step:nth-child(3) { border-bottom: 1px solid var(--bs); }

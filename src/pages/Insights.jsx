@@ -2,23 +2,37 @@ import React, { useState } from "react";
 import CTAButton from "../components/CTAButton";
 
 const takes = [
-  { n:"01", tag:"Perspective", title:"Most AI projects fail before they start.", body:"Companies rush to build before they've validated what data they actually have. We've seen it in fintech, retail, logistics. The fix isn't better models - it's a better discovery process. That's why we start every engagement with a 2-week data audit, not a demo." },
-  { n:"02", tag:"Perspective", title:"Fine-tuning is overrated for most businesses.", body:"Ninety percent of what Indian SMEs need can be done with a well-prompted foundation model and a good retrieval layer. Custom training is expensive, slow, and often unnecessary. We'll tell you honestly when you need it - and when you don't." },
-  { n:"03", tag:"Perspective", title:"Responsible AI isn't a slide in a deck.", body:"Every system we ship includes explainability documentation and a bias audit. Not because it's trendy - because our clients in BFSI and healthcare operate in regulated environments where 'the model said so' isn't an acceptable answer." },
+  { 
+    n:"01", 
+    tag:"Approach", 
+    title:"Understanding before building.", 
+    body:"Many AI initiatives begin with implementation before clearly understanding the problem. Our current approach focuses on exploring the problem space first, ensuring that systems are built with a clear purpose rather than just technical novelty." 
+  },
+  { 
+    n:"02", 
+    tag:"Strategy", 
+    title:"Practical use over complexity.", 
+    body:"Not all problems require highly complex AI systems. In many cases, structured workflows and simpler approaches are more effective. We explore how to balance high-level capability with day-to-day practicality." 
+  },
+  { 
+    n:"03", 
+    tag:"Ethics", 
+    title:"Responsibility in system design.", 
+    body:"AI systems influence decision-making processes, which makes transparency and accountability vital. Our work includes investigating how systems can remain interpretable and reliable in production environments." 
+  },
 ];
 
-const resources = [
-  { type:"Guide",     title:"Is Your Data AI-Ready?",       desc:"A 10-point checklist we give every new client before scoping any AI project. Brutally honest. Free.", action:"Download PDF",    color:"blue" },
-  { type:"Template",  title:"AI Project Scoping Sheet",     desc:"The exact template we use internally to scope client engagements - problem definition, data inventory, success metrics.", action:"Get Template",    color:"rose" },
-  { type:"Framework", title:"Responsible AI Checklist",     desc:"8 questions every team should answer before deploying a model in production. Used by our own engineers on every project.", action:"View Framework",  color:"green" },
+const focusAreas = [
+  { type:"Focus",    title:"Data Readiness",      desc:"Analyzing how data quality and structure directly impact AI outcomes and long-term project viability.", action:"Read Notes",    color:"blue" },
+  { type:"Design",   title:"System Architecture", desc:"Exploring design approaches for various use cases, from RAG layers to agentic workflows.", action:"View Research",  color:"rose" },
+  { type:"Framework", title:"Workflow Clarity",   desc:"Developing methods for improving clarity and predictability in complex AI-driven workflows.", action:"See Framework", color:"green" },
 ];
 
 const faqs = [
-  { q:"Do you work with early-stage startups?",          a:"Yes - some of our best work has been with seed-stage teams who needed to ship fast and prove AI value to investors. We scope accordingly." },
-  { q:"What does a typical first project look like?",    a:"Usually a focused 6–10 week engagement: a 2-week discovery phase, then a working prototype. We de-risk before we build." },
-  { q:"Do we need a large dataset to start?",            a:"Not always. We've built useful models with as few as 500 labelled examples. What matters more is data quality and a clear problem definition." },
-  { q:"How do you price projects?",                      a:"Fixed-scope projects with defined deliverables. No surprise billing. We'll give you a clear quote after a free discovery call." },
-  { q:"Can you integrate with our existing tools?",      a:"Yes. We've shipped integrations with Salesforce, Zoho, SAP, and custom ERP/CRM stacks. We work within your infrastructure, not around it." },
+  { q:"What is the goal of this initiative?", a:"ResoneraAI is currently in an early stage, focusing on understanding how artificial intelligence systems can be structured effectively to solve real-world problems." },
+  { q:"How do you approach AI design?", a:"We analyze different design patterns, observe how organizations attempt to use AI, and identify recurring patterns in both successful and unsuccessful implementations." },
+  { q:"Is this a finished product?", a:"No—this is 'Building in Public.' We are documenting how ideas evolve over time rather than just presenting final conclusions." },
+  { q:"How can I stay updated?", a:"We share periodic updates as new learnings emerge. Our goal is to provide meaningful insights rather than frequent, low-value content." },
 ];
 
 export default function Insights({ onNav }) {
@@ -36,42 +50,41 @@ export default function Insights({ onNav }) {
           <div className="ins-hero-text">
             <span className="eyebrow">Thinking Out Loud</span>
             <h1 className="ins-h1">
-              We write when<br />
-              we have something<br />
-              <em className="ins-em">worth saying.</em>
+              Sharing<br />
+              observations while<br />
+              <em className="ins-em">building.</em>
             </h1>
             <p className="ins-sub">
-              No content calendar. No SEO filler. Just a few honest perspectives
-              on AI from a team that builds it every day - and some free resources
-              we actually use ourselves.
+              This section represents ongoing thoughts, learnings, and observations 
+              gathered during the development of the ResoneraAI initiative. We document 
+              how ideas evolve in real-time.
             </p>
           </div>
           <div className="ins-hero-aside">
             <div className="stage-card">
               <div className="stage-dot-row">
                 <span className="stage-dot" />
-                <span className="stage-status">Building in public</span>
+                <span className="stage-status">Building in progress</span>
               </div>
               <p className="stage-text">
-                We're a Mumbai-based AI startup.
-                This isn't a content hub - it's how we share what
-                we're learning as we build.
+                The initiative is in an early stage, exploring how AI systems 
+                can be structured effectively for long-term value.
               </p>
               <div className="stage-stats">
-                <div className="stage-stat"><span className="stage-val">0 → 1</span><span className="stage-label">Building first version</span></div>
-                <div className="stage-stat"><span className="stage-val">Now</span><span className="stage-label">In progress</span></div>
+                <div className="stage-stat"><span className="stage-val">Phase</span><span className="stage-label">Discovery & Design</span></div>
+                <div className="stage-stat"><span className="stage-val">Stage</span><span className="stage-label">Early Development</span></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* §2 TAKES */}
+      {/* §2 TAKES (OUR THINKING) */}
       <section className="takes-section">
         <div className="pg-wrap">
           <div className="takes-head">
-            <span className="eyebrow">Our Thinking</span>
-            <h2 className="h2">Three things we believe<br /><span className="rose">most AI vendors won't say.</span></h2>
+            <span className="eyebrow">Core Philosophy</span>
+            <h2 className="h2">Three principles guiding<br /><span className="rose">our system development.</span></h2>
           </div>
           <div className="takes-list">
             {takes.map(t => (
@@ -89,18 +102,21 @@ export default function Insights({ onNav }) {
         </div>
       </section>
 
-      {/* §3 RESOURCES */}
+      {/* §3 RESOURCES (ONGOING FOCUS AREAS) */}
       <section className="res-section">
         <div className="pg-wrap">
           <div className="res-head">
             <div>
-              <span className="eyebrow">Free Resources</span>
-              <h2 className="h2">Things we made<br /><span className="rose">that actually help.</span></h2>
+              <span className="eyebrow">Ongoing Focus</span>
+              <h2 className="h2">Research areas we're<br /><span className="rose">currently exploring.</span></h2>
             </div>
-            <p className="res-head-desc">These are tools and frameworks our own team uses on every project. We're sharing them because we'd rather you start a project well than start it with us badly.</p>
+            <p className="res-head-desc">
+              These materials and frameworks support our understanding of AI systems. 
+              They are intended to evolve alongside the platform as we find new ways to improve clarity.
+            </p>
           </div>
           <div className="res-grid">
-            {resources.map(r => (
+            {focusAreas.map(r => (
               <div key={r.title} className={`res-card res-card--${r.color}`}>
                 <span className="res-type">{r.type}</span>
                 <h3 className="res-title">{r.title}</h3>
@@ -118,10 +134,10 @@ export default function Insights({ onNav }) {
       {/* §4 PULL STATEMENT */}
       <section className="statement-band">
         <div className="pg-wrap sb-inner">
-          <p className="sb-text">"The best AI project we ever did started with a client saying <em>'we don't know if this is even possible.'</em> That honesty saved six months and ₹40 lakh."</p>
+          <p className="sb-text">"The focus remains on identifying patterns in successful AI implementations while avoiding the rush toward unvalidated complexity."</p>
           <div className="sb-source">
-            <span className="sb-name">ResoneraAI founding team</span>
-            <span className="sb-role">Mumbai, 2024</span>
+            <span className="sb-name">ResoneraAI Initiative</span>
+            <span className="sb-role">Documentation & Learnings</span>
           </div>
         </div>
         <span className="sb-deco" aria-hidden="true">◈</span>
@@ -131,12 +147,9 @@ export default function Insights({ onNav }) {
       <section className="faq-section">
         <div className="pg-wrap faq-inner">
           <div className="faq-left">
-            <span className="eyebrow">Common Questions</span>
-            <h2 className="h2">The stuff people<br /><span className="rose">always ask us.</span></h2>
-            <p className="faq-left-desc">If something isn't covered here, just ask. We respond to every email personally.</p>
-            <div style={{marginTop:32}}>
-              <CTAButton variant="outline" onClick={() => onNav("contact")}>Ask Us Anything</CTAButton>
-            </div>
+            <span className="eyebrow">Context</span>
+            <h2 className="h2">Frequently asked<br /><span className="rose">about the initiative.</span></h2>
+            <p className="faq-left-desc">Clarifying our goals and our methodical approach to building ResoneraAI.</p>
           </div>
           <div className="faq-right">
             {faqs.map((f, i) => (
@@ -154,26 +167,23 @@ export default function Insights({ onNav }) {
         </div>
       </section>
 
-      {/* §6 NEWSLETTER */}
+      {/* §6 NEWSLETTER (STAYING UPDATED) */}
       <section className="nl-section">
         <div className="pg-wrap nl-outer">
           {sent ? (
             <div className="nl-success">
-              <div className="nl-check">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#e8294c" strokeWidth="1.5"/><path d="M8 14l4 4 8-8" stroke="#e8294c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </div>
               <h2 className="nl-success-title">You're on the list.</h2>
-              <p className="nl-success-body">We'll write when we have something worth reading. No weekly cadence, no fluff - just the occasional sharp take from the team.</p>
-              <button className="nl-reset" onClick={() => { setSent(false); setEmail(""); }}>Subscribe another email</button>
+              <p className="nl-success-body">Updates are shared periodically as new learnings emerge. No noise, just meaningful insights.</p>
+              <button className="nl-reset" onClick={() => { setSent(false); setEmail(""); }}>Reset</button>
             </div>
           ) : (
             <>
               <div className="nl-left">
-                <span className="eyebrow">Stay in the Loop</span>
-                <h2 className="h2">Occasional dispatches.<br /><span className="rose">No noise.</span></h2>
-                <p className="nl-desc">When we publish a new perspective, ship a free resource, or learn something genuinely useful - we'll send it. That's it. No content calendar, no AI-generated filler.</p>
+                <span className="eyebrow">Staying Updated</span>
+                <h2 className="h2">Occasional dispatches.<br /><span className="rose">Meaningful insights.</span></h2>
+                <p className="nl-desc">The intention is to provide documented learnings as they evolve. We prioritize depth over frequency.</p>
                 <div className="nl-promise">
-                  {["Honest AI perspectives","Free tools and frameworks","Real case study write-ups"].map(p => (
+                  {["System design patterns","Data readiness research","Workflow clarity frameworks"].map(p => (
                     <div key={p} className="nl-promise-item">
                       <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l4 4 6-6" stroke="#e8294c" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       {p}
@@ -181,32 +191,20 @@ export default function Insights({ onNav }) {
                   ))}
                 </div>
               </div>
-              <form className="nl-form" onSubmit={handleSubscribe} noValidate>
-                <label className="nl-label">Your email</label>
-                <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="you@company.com" className="nl-input" />
+              <form className="nl-form" onSubmit={handleSubscribe}>
+                <label className="nl-label">Email address</label>
+                <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="name@organization.com" className="nl-input" />
                 <button type="submit" className="nl-submit">
                   Join the list
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </button>
-                <p className="nl-fine">We write maybe once a month. Unsubscribe any time.</p>
               </form>
             </>
           )}
         </div>
       </section>
 
-      {/* §7 CTA */}
-      <section className="ins-cta">
-        <div className="pg-wrap ins-cta-inner">
-          <div>
-            <span className="eyebrow">Work With Us</span>
-            <h2 className="h2" style={{marginBottom:12}}>Ready to build something real?</h2>
-            <p className="ins-cta-sub">A free 30-minute discovery call. We'll tell you honestly what's possible - and what isn't.</p>
-          </div>
-          <CTAButton size="lg" onClick={() => onNav("contact")}>Book a Discovery Call</CTAButton>
-        </div>
-      </section>
-
+      {/* Remaining Styles stay exactly as in your original code */}
       <style>{`
         *, *::before, *::after { box-sizing: border-box; }
         :root {

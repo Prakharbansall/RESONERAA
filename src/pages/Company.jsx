@@ -30,7 +30,6 @@ function RoseVisual() {
       const cx = W / 2;
       const cy = H / 2;
 
-      // Concentric pulsing rings
       const rings = [
         { r: 120, alpha: 0.06, speed: 0.4 },
         { r: 90,  alpha: 0.09, speed: 0.7 },
@@ -45,7 +44,6 @@ function RoseVisual() {
         ctx.stroke();
       });
 
-      // Rotating petals (8 arms)
       const petals = 8;
       for (let i = 0; i < petals; i++) {
         const angle  = (i / petals) * Math.PI * 2 + t * 0.18;
@@ -60,7 +58,6 @@ function RoseVisual() {
         ctx.fillStyle = `rgba(232, 41, 76, ${alpha})`;
         ctx.fill();
 
-        // Spoke from centre
         ctx.beginPath();
         ctx.moveTo(cx, cy);
         ctx.lineTo(x, y);
@@ -69,7 +66,6 @@ function RoseVisual() {
         ctx.stroke();
       }
 
-      // Inner connector dots (secondary layer, blush pink)
       for (let i = 0; i < 6; i++) {
         const angle = (i / 6) * Math.PI * 2 - t * 0.28;
         const r     = 50 + Math.sin(t * 0.8 + i * 1.2) * 8;
@@ -81,7 +77,6 @@ function RoseVisual() {
         ctx.fill();
       }
 
-      // Centre core
       ctx.beginPath();
       ctx.arc(cx, cy, 10 + Math.sin(t * 1.2) * 2, 0, Math.PI * 2);
       ctx.fillStyle = "rgba(232, 41, 76, 0.85)";
@@ -107,9 +102,9 @@ function RoseVisual() {
       <canvas ref={canvasRef} className="rose-canvas" />
       <div className="rose-pillars">
         {[
-          ["Mission",  "Build AI that resonates with real human needs."],
-          ["Vision",   "Make world-class AI accessible to every business."],
-          ["Approach", "Transparent, ethical, outcome-driven delivery."],
+          ["Mission",  "To explore how AI systems can be structured in a way that aligns with real-world operational needs and workflows."],
+          ["Vision",   "To contribute towards making structured AI systems more accessible and adaptable across different industries and use cases."],
+          ["Approach", "Gradual and structured development- studying workflows, identifying opportunities, building components, and refining through observation."],
         ].map(([k, v]) => (
           <div key={k} className="rose-pillar">
             <span className="rose-pillar-key">{k}</span>
@@ -125,27 +120,26 @@ function RoseVisual() {
    Data
 ───────────────────────────────────────────────────────────── */
 const values = [
-  { icon: "✦", title: "Integrity First",    desc: "Every model we build is transparent, explainable, and aligned with human values. No black boxes." },
-  { icon: "◎", title: "Innovation Always",  desc: "We stay at the cutting edge of AI research so our clients always have access to the best tools." },
-  { icon: "◈", title: "Client-Centric",     desc: "Your success metric is our north star. We don't ship code - we deliver outcomes." },
-  { icon: "⬡", title: "Responsible AI",     desc: "Ethics and safety are foundational to how we design, build, and deploy every system." },
-  { icon: "⊕", title: "Speed to Value",     desc: "AI value should be realised in weeks, not years. Our processes are built for velocity." },
-  { icon: "◬", title: "Deep Partnership",   desc: "We embed in your team, your domain, and your goals. We succeed when you succeed." },
+  { icon: "✦", title: "Clarity over complexity",      desc: "We prioritise clear, understandable systems over unnecessarily complex ones. Simplicity is a feature, not a limitation." },
+  { icon: "◎", title: "Continuous learning",           desc: "Every iteration teaches us something. We build with the expectation of refining, not finishing." },
+  { icon: "◈", title: "Responsible system design",    desc: "We approach AI development with care- ensuring systems are interpretable, ethical, and aligned with real needs." },
+  { icon: "⬡", title: "Practical implementation",     desc: "Ideas matter only when they translate into working systems. We focus on what is usable, not just what is theoretically possible." },
+  { icon: "⊕", title: "Transparency in development",  desc: "We are open about what we are building, what stage we are at, and what we are still learning." },
 ];
 
 const milestones = [
-  { year: "", title: "Exploring the problem",  desc: "We’re still understanding where AI can create real value instead of just hype." },
-  { year: "", title: "Learning from users",     desc: "Talking to people, studying workflows, and identifying actual pain points." },
-  { year: "", title: "Building small experiments",  desc: "Testing ideas through simple prototypes to see what works." },
-  { year: "", title: "Staying practical",  desc: "Avoiding overengineering and focusing only on useful solutions." },
-  { year: "",    title: "Moving step by step",       desc: "No big claims - just consistent progress and learning." },
+  { title: "Exploring the problem",      desc: "Understanding where AI can provide practical value rather than theoretical capability." },
+  { title: "Learning from workflows",    desc: "Studying how systems operate in real environments to identify genuine opportunities." },
+  { title: "Building small experiments", desc: "Testing ideas through controlled prototypes to see what works in practice." },
+  { title: "Staying practical",          desc: "Focusing on systems that are usable and relevant rather than overengineered." },
+  { title: "Moving step by step",        desc: "Progressing through continuous learning and iteration- no big claims, just consistent progress." },
 ];
 
 const team = [
-  { role: "AI & ML Engineering",     icon: "⬡", desc: "Building and optimising models, pipelines, and infrastructure." },
-  { role: "Solutions Architecture",  icon: "◈", desc: "Designing enterprise-grade systems that integrate cleanly with existing stacks." },
-  { role: "Data Science",            icon: "◎", desc: "Turning raw data into insight, and insight into action." },
-  { role: "Product & Design",        icon: "✦", desc: "Crafting intelligent products that users actually love." },
+  { role: "AI & ML Engineering",    icon: "⬡", desc: "Building and optimising models, pipelines, and infrastructure." },
+  { role: "Solutions Architecture", icon: "◈", desc: "Designing systems that integrate cleanly with existing operational environments." },
+  { role: "Data Science",           icon: "◎", desc: "Structuring data and understanding how it can be prepared for AI applications." },
+  { role: "Product & Design",       icon: "✦", desc: "Shaping how systems are experienced and how they align with user needs." },
 ];
 
 /* ─────────────────────────────────────────────────────────────
@@ -160,12 +154,13 @@ export default function Company({ onNav }) {
           <span className="eyebrow">Who We Are</span>
           <h1 className="co-hero-title">
             Built in Mumbai.<br />
-            <span className="rose-accent">Thinking Globally.</span>
+            <span className="rose-accent">Thinking ahead with clarity.</span>
           </h1>
           <p className="co-hero-sub">
-            ResoneraAI Private Limited is an AI startup dedicated to making
-            enterprise-grade artificial intelligence accessible, actionable,
-            and transformative - for every organisation, everywhere.
+            ResoneraAI Private Limited is an AI-focused startup working on exploring
+            how artificial intelligence systems can be structured, organised, and applied
+            in real-world environments. The initiative is centred on making AI systems
+            more understandable, adaptable, and aligned with practical workflows.
           </p>
           <div className="co-hero-ctas">
             <CTAButton onClick={() => onNav("platform")}>See Our Platform</CTAButton>
@@ -175,7 +170,7 @@ export default function Company({ onNav }) {
             <span className="co-address-label">Registered Office</span>
             <address className="co-address-body">
               Room No.2, Kore Sankalp, Siddhi Chawl,<br />
-              Chougle Nag, Borivali East,<br />
+              Chougle Nagar, Borivali East,<br />
               Mumbai, Maharashtra 400066, India
             </address>
           </div>
@@ -190,32 +185,31 @@ export default function Company({ onNav }) {
         <div className="co-story-text">
           <span className="eyebrow">Our Story</span>
           <h2 className="section-title">
-            Where Resonance<br />
-            <span className="rose-accent">Meets Reason</span>
+            Where Structure<br />
+            <span className="rose-accent">Meets Intelligence</span>
           </h2>
           <p className="body-copy">
-            The name ResoneraAI is born from two ideas: <em>resonance</em> - the deep
-            alignment between technology and human needs - and <em>AI</em>. We believe
-            that truly effective artificial intelligence must resonate with the problems
-            it solves and the people it serves.
+            ResoneraAI originated from the observation that artificial intelligence is
+            often approached in two extremes- either as highly technical research or
+            as generic, one-size-fits-all solutions.
           </p>
           <p className="body-copy">
-            We were founded by technologists and domain experts who saw a gap: most AI
-            companies were either too academic or too generic. Businesses needed a partner
-            who could bridge cutting-edge AI research and real-world operational deployment.
+            In both cases, the connection between technology and real-world usability
+            can become unclear. The initiative aims to explore a more balanced approach,
+            where AI systems are <em>technically structured</em>, <em>practically applicable</em>,
+            and <em>continuously refined</em>.
           </p>
           <p className="body-copy">
-            Proudly built in Borivali East, Mumbai - we are an Indian AI startup building
-            world-class solutions with global ambition. Our work spans fintech, healthcare,
-            retail, logistics, and beyond.
+            The work is currently focused on understanding how organisations interact
+            with data and how AI can be introduced in a structured and meaningful way.
           </p>
         </div>
 
         <div className="co-timeline">
-          <span className="eyebrow">WHAT WE’RE DOING</span>
+          <span className="eyebrow">WHAT WE'RE DOING</span>
           {milestones.map((m) => (
-            <div key={m.year} className="timeline-row">
-              <span className="timeline-year">{m.year}</span>
+            <div key={m.title} className="timeline-row">
+              <span className="timeline-year"></span>
               <div className="timeline-connector">
                 <div className="timeline-dot" />
                 <div className="timeline-line" />
@@ -257,9 +251,9 @@ export default function Company({ onNav }) {
             <span className="rose-accent">Build AI</span>
           </h2>
           <p className="body-copy" style={{ maxWidth: 360, marginTop: 12, marginBottom: 32 }}>
-            Our multidisciplinary team combines deep AI expertise with domain knowledge
-            across industries - engineers, scientists, strategists, and designers united
-            by a passion for intelligent systems.
+            The initiative is currently in a development phase focused on system
+            exploration, experimentation, and design. As the platform evolves, the
+            team structure will expand based on technical and operational requirements.
           </p>
           <CTAButton variant="outline" onClick={() => onNav("contact")}>
             Join the Team
@@ -281,15 +275,16 @@ export default function Company({ onNav }) {
       {/* ── Bottom CTA ─────────────────────────────────────── */}
       <section className="co-cta">
         <div className="co-cta-inner">
-          <span className="eyebrow" style={{ justifyContent: "center" }}>Ready to Start?</span>
+          <span className="eyebrow" style={{ justifyContent: "center" }}>Ready to explore AI systems?</span>
           <h2 className="section-title" style={{ marginBottom: 16 }}>
-            Join Us on the <span className="rose-accent">AI Frontier</span>
+            Let's begin a <span className="rose-accent">conversation</span>
           </h2>
           <p className="co-cta-sub">
-            We're always looking for bold clients and brilliant partners to build
-            the future of AI together.
+            We're looking for teams willing to collaborate and grow together-
+            exploring how structured AI systems can be designed and applied in
+            practical environments.
           </p>
-          <CTAButton size="lg" onClick={() => onNav("contact")}>Get in Touch</CTAButton>
+          <CTAButton size="lg" onClick={() => onNav("contact")}>Start a Conversation</CTAButton>
         </div>
       </section>
 
@@ -310,7 +305,6 @@ export default function Company({ onNav }) {
           --border-light:  rgba(232,41,76,0.06);
         }
 
-        /* Shared typography */
         .eyebrow {
           display:        block;
           font-family:    'DM Sans', system-ui, sans-serif;
@@ -332,15 +326,13 @@ export default function Company({ onNav }) {
           margin:         0 0 24px;
         }
 
-        .rose-accent {
-          color: var(--rose-500);
-        }
+        .rose-accent { color: var(--rose-500); }
 
         .body-copy {
-          font-family:  'DM Sans', system-ui, sans-serif;
-          font-size:    1rem;
-          color:        var(--text-secondary);
-          line-height:  1.85;
+          font-family:   'DM Sans', system-ui, sans-serif;
+          font-size:     1rem;
+          color:         var(--text-secondary);
+          line-height:   1.85;
           margin-bottom: 18px;
         }
 
@@ -372,18 +364,18 @@ export default function Company({ onNav }) {
         }
 
         .co-hero-sub {
-          font-family:  'DM Sans', system-ui, sans-serif;
-          font-size:    1.05rem;
-          color:        var(--text-secondary);
-          line-height:  1.8;
+          font-family:   'DM Sans', system-ui, sans-serif;
+          font-size:     1.05rem;
+          color:         var(--text-secondary);
+          line-height:   1.8;
           margin-bottom: 32px;
-          max-width:    480px;
+          max-width:     480px;
         }
 
         .co-hero-ctas {
-          display:   flex;
-          gap:       12px;
-          flex-wrap: wrap;
+          display:       flex;
+          gap:           12px;
+          flex-wrap:     wrap;
           margin-bottom: 36px;
         }
 
@@ -422,10 +414,10 @@ export default function Company({ onNav }) {
         }
 
         .rose-visual-wrap {
-          width:           100%;
-          display:         flex;
-          flex-direction:  column;
-          gap:             24px;
+          width:          100%;
+          display:        flex;
+          flex-direction: column;
+          gap:            24px;
         }
 
         .rose-canvas {
@@ -437,22 +429,20 @@ export default function Company({ onNav }) {
         }
 
         .rose-pillars {
-          display:       flex;
+          display:        flex;
           flex-direction: column;
-          gap:           0;
+          gap:            0;
         }
 
         .rose-pillar {
-          display:        flex;
-          gap:            20px;
-          padding:        14px 0;
-          border-bottom:  1px solid var(--border-soft);
-          align-items:    flex-start;
+          display:       flex;
+          gap:           20px;
+          padding:       14px 0;
+          border-bottom: 1px solid var(--border-soft);
+          align-items:   flex-start;
         }
 
-        .rose-pillar:last-child {
-          border-bottom: none;
-        }
+        .rose-pillar:last-child { border-bottom: none; }
 
         .rose-pillar-key {
           font-family:    'DM Sans', system-ui, sans-serif;
@@ -474,16 +464,15 @@ export default function Company({ onNav }) {
 
         /* ── Story ────────────────────────────────────────── */
         .co-story {
-          max-width: 1120px;
-          margin:    0 auto;
-          padding:   100px 32px;
-          display:   grid;
+          max-width:   1120px;
+          margin:      0 auto;
+          padding:     100px 32px;
+          display:     grid;
           grid-template-columns: 1fr 1fr;
-          gap:       80px;
+          gap:         80px;
           align-items: start;
         }
 
-        /* Timeline */
         .co-timeline {
           display:        flex;
           flex-direction: column;
@@ -510,7 +499,6 @@ export default function Company({ onNav }) {
           display:        flex;
           flex-direction: column;
           align-items:    center;
-          gap:            0;
           padding-top:    4px;
         }
 
@@ -530,15 +518,13 @@ export default function Company({ onNav }) {
           margin-top: 4px;
         }
 
-        .timeline-row:last-child .timeline-line {
-          display: none;
-        }
+        .timeline-row:last-child .timeline-line { display: none; }
 
         .timeline-title {
-          font-family:  'DM Serif Display', Georgia, serif;
-          font-size:    1.1rem;
-          font-weight:  400;
-          color:        var(--text-primary);
+          font-family:   'DM Serif Display', Georgia, serif;
+          font-size:     1.1rem;
+          font-weight:   400;
+          color:         var(--text-primary);
           margin-bottom: 4px;
         }
 
@@ -551,42 +537,40 @@ export default function Company({ onNav }) {
 
         /* ── Values ───────────────────────────────────────── */
         .co-values {
-          background: var(--rose-50);
+          background:    var(--rose-50);
           border-top:    1px solid var(--border-soft);
           border-bottom: 1px solid var(--border-soft);
           padding:       100px 32px;
         }
 
         .co-values-header {
-          max-width:     1120px;
-          margin:        0 auto 56px;
-          display:       grid;
+          max-width:   1120px;
+          margin:      0 auto 56px;
+          display:     grid;
           grid-template-columns: 1fr 1fr;
-          gap:           40px;
-          align-items:   end;
+          gap:         40px;
+          align-items: end;
         }
 
         .values-grid {
-          max-width:              1120px;
-          margin:                 0 auto;
-          display:                grid;
-          grid-template-columns:  repeat(3, 1fr);
-          gap:                    1px;
-          background:             var(--border-soft);
-          border:                 1px solid var(--border-soft);
-          border-radius:          16px;
-          overflow:               hidden;
+          max-width:             1120px;
+          margin:                0 auto;
+          display:               grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap:                   1px;
+          background:            var(--border-soft);
+          border:                1px solid var(--border-soft);
+          border-radius:         16px;
+          overflow:              hidden;
         }
 
         .val-card {
-          background:  #fff;
-          padding:     40px 32px;
-          transition:  background 0.2s ease, transform 0.2s ease;
+          background: #fff;
+          padding:    40px 32px;
+          transition: background 0.2s ease;
         }
 
-        .val-card:hover {
-          background: var(--rose-50);
-        }
+        .val-card:hover { background: var(--rose-50); }
 
         .val-icon {
           display:       block;
@@ -613,12 +597,12 @@ export default function Company({ onNav }) {
 
         /* ── Team ─────────────────────────────────────────── */
         .co-team {
-          max-width: 1120px;
-          margin:    0 auto;
-          padding:   100px 32px;
-          display:   grid;
+          max-width:   1120px;
+          margin:      0 auto;
+          padding:     100px 32px;
+          display:     grid;
           grid-template-columns: 1fr 1fr;
-          gap:       80px;
+          gap:         80px;
           align-items: start;
         }
 
@@ -641,9 +625,7 @@ export default function Company({ onNav }) {
           transition:  background 0.18s ease;
         }
 
-        .team-card:hover {
-          background: var(--rose-50);
-        }
+        .team-card:hover { background: var(--rose-50); }
 
         .team-icon {
           font-size:   1.3rem;
@@ -669,10 +651,10 @@ export default function Company({ onNav }) {
 
         /* ── Bottom CTA ───────────────────────────────────── */
         .co-cta {
-          background:    var(--rose-50);
-          border-top:    1px solid var(--border-soft);
-          padding:       100px 32px;
-          text-align:    center;
+          background:  var(--rose-50);
+          border-top:  1px solid var(--border-soft);
+          padding:     100px 32px;
+          text-align:  center;
         }
 
         .co-cta-inner {
@@ -681,7 +663,6 @@ export default function Company({ onNav }) {
           display:        flex;
           flex-direction: column;
           align-items:    center;
-          gap:            0;
         }
 
         .co-cta-sub {
@@ -695,45 +676,27 @@ export default function Company({ onNav }) {
 
         /* ── Responsive ───────────────────────────────────── */
         @media (max-width: 960px) {
-          .co-hero,
-          .co-story,
-          .co-team {
+          .co-hero, .co-story, .co-team {
             grid-template-columns: 1fr;
-            gap: 48px;
+            gap:           48px;
             padding-left:  24px;
             padding-right: 24px;
           }
 
-          .co-values {
-            padding-left:  24px;
-            padding-right: 24px;
-          }
+          .co-values { padding-left: 24px; padding-right: 24px; }
 
-          .co-values-header {
-            grid-template-columns: 1fr;
-            gap: 8px;
-          }
+          .co-values-header { grid-template-columns: 1fr; gap: 8px; }
 
-          .values-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
+          .values-grid { grid-template-columns: repeat(2, 1fr); }
 
           .co-hero { padding-top: 100px; }
           .co-hero-visual { order: -1; }
         }
 
         @media (max-width: 600px) {
-          .values-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .co-hero-title {
-            font-size: 2.1rem;
-          }
-
-          .timeline-row {
-            grid-template-columns: 60px 20px 1fr;
-          }
+          .values-grid { grid-template-columns: 1fr; }
+          .co-hero-title { font-size: 2.1rem; }
+          .timeline-row { grid-template-columns: 60px 20px 1fr; }
         }
       `}</style>
     </>
