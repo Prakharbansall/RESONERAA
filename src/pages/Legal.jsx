@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const LAST_UPDATED = "March 202";
 const COMPANY      = "ResoneraAI Private Limited";
-const EMAIL        = "hello@resoneraai.com";
+const EMAIL        = "hello@resoneraaipvtltd.in";
 const ADDRESS      = "Room No.2, Kore Sankalp, Siddhi Chawl, Chougle Nag, Borivali East, Mumbai, Maharashtra 400066, India";
 const CIN          = "U72900MH2024PTC000000"; // placeholder
 
@@ -48,7 +48,7 @@ const privacy = [
 const terms = [
   {
     title: "Acceptance of Terms",
-    body: `By accessing or using the ResoneraAI website (resoneraai.com) or engaging our services, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree with any part of these terms, you may not use our website or services. These terms apply to all visitors, clients, and others who access the website.`,
+    body: `By accessing or using the ResoneraAI website (resoneraaipvtltd.in) or engaging our services, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree with any part of these terms, you may not use our website or services. These terms apply to all visitors, clients, and others who access the website.`,
   },
   {
     title: "Our Services",
