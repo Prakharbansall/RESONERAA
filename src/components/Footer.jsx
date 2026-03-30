@@ -73,7 +73,6 @@ export default function Footer({ onNav }) {
           </div>
           
           <div className="footer-legal">
-            <button className="footer-legal-link" onClick={() => onNav("legal")}>Data Practices</button>
             <button className="footer-legal-link" onClick={() => onNav("legal")}>Privacy & Terms</button>
           </div>
         </div>
